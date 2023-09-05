@@ -17,3 +17,7 @@ Author : Yugeta.Koji
 
 # Sample
 - [Sample-link](https://yugeta.github.io/animation_timeline/sample/)
+
+# Website
+- Blog    : https://blog.myntinc.com/2023/09/cssanimation-timelinegooglechrome.html
+- Company : https://myntinc.com
