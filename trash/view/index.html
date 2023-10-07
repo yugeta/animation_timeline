@@ -1,0 +1,144 @@
+<script type='module' src='../../src/main.js'></script>
+
+<div class='height100'></div>
+<div class='scroll'>
+  <ul class='cols'>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<div class='box'></div>
+<div class='height100'>
+</div>
+
+<style>
+.height100{
+  width:200vw;
+  height:150vh;
+  background:linear-gradient(#e66465, #9198e5);
+}
+
+.scroll{
+
+}
+.cols{
+  animation: slide-image linear both;
+  animation-timeline: view();
+  animation-range: contain;
+
+  /* display:flex;
+  gap:20px;
+  width:200vw;
+  padding:20px; */
+  display:block;
+  white-space:nowrap;
+}
+.cols > *{
+  display:inline-block;
+  list-style:none;
+  background-color:red;
+  width:300px;
+  height:200px;
+  margin:20px;
+}
+
+
+.box{
+  /* margin-left:120vw; */
+  margin-bottom:200px;
+  width:100px;
+  height:100px;
+  border:1px solid black;
+}
+.box::before{
+  content:'';
+  display:block;
+  width:100%;
+  height:100%;
+  background-color:blue;
+
+  /* animation-name: scroll-anim;
+  animation-timeline:scroll();
+  --animation-timeline:scroll(); */
+  animation: box linear both;
+  animation-timeline: view();
+  --animation-timeline: view();
+  /* animation-range: contain 50% contain 70%; */
+  /* animation-range-start : normal;
+  animation-range-end   : normal; */
+  /* animation-range-start : 0%;
+  animation-range-end   :100%; */
+
+}
+
+@keyframes box{
+  0%{
+    height:0%;
+  }
+  100%{
+    height:100%;
+  }
+}
+
+
+</style>
+
+<!-- <style>
+.height100{
+  height:100vh;
+}
+.scroll{
+  view-timeline: --sticky-timeline;
+  position: sticky;
+  top: 0;
+  /* overflow-x:scroll; */
+  overflow-x: clip;
+  background-color:#eee;
+  height:100vh;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* scroll-bar hidden */
+.scroll::-webkit-scrollbar{
+  display:none;
+}
+
+.cols{
+  animation: slide-image linear both;
+  animation-timeline: view();
+  animation-range: contain;
+
+  /* display:flex;
+  gap:20px;
+  width:200vw;
+  padding:20px; */
+  display:block;
+  white-space:nowrap;
+}
+.cols > *{
+  display:inline-block;
+  list-style:none;
+  background-color:red;
+  width:300px;
+  height:200px;
+  margin:20px;
+}
+
+@keyframes slide-image {
+  from {
+    translate: 50vw 0;
+  }
+  to {
+    translate: -550px 0;
+  }
+}
+</style> -->

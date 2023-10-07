@@ -1,0 +1,33 @@
+
+<!--
+スクロールに応じてアニメーション
+-->
+
+<div class="animationElement"></div>
+<style>
+body {
+  height: 200vh; /* スクロールが発生するよう適当な高さを確保 */
+}
+/* 垂直方向にスケールを変えるキーフレーム */
+@keyframes grow-progress {
+  from {
+    scale: 1 0;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+.animationElement {
+  /* スタイリング */
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background: royalblue;
+  transform-origin: bottom; /* 下部を変形の基準にしておく */
+  
+  /* スクロールアニメーションの設定 */
+  animation: grow-progress linear; /* アニメーションを指定。イージングはlinear */
+  animation-timeline: scroll();
+}
+
+</style>

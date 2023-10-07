@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scroll-driven Animationsのデモ</title>
+  <!-- <link rel="stylesheet" href="./style/base.css">
+  <link rel="stylesheet" href="./style/style.css"> -->
+</head>
+
+<body>
+<div class="drop"><span class="drop_inner"></span></div>
+
+<div class="hero">
+  <p class="mobileAlert">PCサイズ画面での閲覧推奨です。<br>画面幅が小さいと、若干見づらいところがあると思います。ご了承ください。</p>
+
+  <h1 class="hero_title">Only CSS<br>Scroll-driven Animations<br>Sample</h1>
+  <div class="hero_layer hero_layer__back"></div>
+  <div class="hero_layer hero_layer__front"></div>
+</div>
+
+<div class="wrapper">
+  <section class="sectionBird">
+    <p>
+      王子がにわかに叫びました。<br>
+      「誰だ、今歌ったものは、ここへ出ろ」<br>
+      　するとおどろいたことは、王子たちの青い大きな帽子に飾ってあった二羽の青びかりの蜂雀が、ブルルルブルッと飛んで、二人ふたりの前に降りました。そして声をそろえて言いました。<br>
+      「はい。何かご用でございますか」<br>
+      「今の歌はお前たちか。なぜこんなに雨をふらせたのだ」<br>
+      　蜂雀はじょうずな芝笛のように叫びました。<br>
+      「それは王子さま。私どもの大事のご主人さま。私どもは空をながめて歌っただけでございます。そらをながめておりますと、きりがあめにかわるかどうかよくわかったのでございます」<br>
+      「そしてお前らはどうして歌ったり飛んだりしたのだ」<br>
+      「はい。ここからは私どもの歌ったり飛んだりできる所になっているのでございます。ご案内いたしましょう」<br>
+      　雨はポッシャンポッシャン降っています。蜂雀はそう言いいながら、向こうの方へ飛び出しました。せなかや胸に鋼鉄のはり金がはいっているせいか飛びようがなんだか少し変でした。<br>
+      　王子たちはそのあとをついて行きました。
+    </p>
+    <p>
+      にわかにあたりがあかるくなりました。
+      今までポシャポシャやっていた雨が急に大粒になってざあざあと降ってきたのです。
+      はちすずめが水の中の青い魚のように、なめらかにぬれて光りながら、二人の頭の上をせわしく飛びめぐって、
+    </p>
+    <img class="bird" src="./images/hummingbird.svg" alt="" width="120" height="80">
+    <img class="bird bird__reverse" src="./images/hummingbird.svg" alt="" width="120" height="80">
+  </section>
+
+  <section class="sectionPin pin">
+    <div class="pin_sticky">
+      <div class="pin_wrapper">
+        <p class="pin_text">
+          ザッ、ザ、ザ、ザザァザ、ザザァザ、ザザァ、<br/>
+          ふらばふれふれ、ひでりあめ、<br/>
+          トパァス、サファイア、ダイアモンド。
+        </p>
+        <img class="image" src="./images/topaz.webp" alt="トパァス" width="300" height="300">
+        <img class="image image__2" src="./images/sapphire.webp" alt="サファイア" width="300" height="300">
+        <img class="image image__3" src="./images/diamond.webp" alt="ダイアモンド" width="300" height="300">
+      </div>
+    </div>
+  </section>
+
+  <section class="sectionDrop">
+    <p>
+      ザッザザ、ザザァザ、ザザァザザザァ、<br>
+      降らばふれふれひでりあめ<br>
+      ひかりの雲のたえぬまま。
+    </p>
+    <p>
+      と歌いましたので雨の音はひとしお高くなり、そこらはまたひとしきりかがやきわたりました。<br>
+      それから、はちすずめは、だんだんゆるやかに飛んで、
+    </p>
+    <div class="dropGem dropGem__1 dropGem__blue1 dropGem__small"></div>
+    <div class="dropGem dropGem__2 dropGem__blue3"></div>
+    <div class="dropGem dropGem__3 dropGem__blue2 dropGem__medium"></div>
+    <div class="dropGem dropGem__4 dropGem__blue3 dropGem__small"></div>
+    <div class="dropGem dropGem__5 dropGem__blue1  dropGem__medium"></div>
+  </section>
+
+  <section class="sectionSky sky">
+    <img class="sky_image" src="./images/sky.webp" alt="" width="1920" height="1920">
+    <p class="sky_text">
+      ザッザザ、ザザァザ、ザザァザザザァ、<br>
+      やまばやめやめ、ひでりあめ<br>
+      そらは　みがいた　
+      <ruby>土耳古玉
+        <rt>トルコだま</rt>
+      </ruby>
+      。
+    </p>
+    <p class="sky_text">と歌いますと、雨がぴたりとやみました。</p>
+  </section>
+</div>
+
+<nav class="navigation">
+  <ul>
+    <li><span>■</span><a href="./index-scroll.html">Scroll Progress Timelineのデモ</a></li>
+    <li><span>■</span><a href="./index-view.html">View Progress Timelineのデモ</a></li>
+    <li class="navigation_currentPage"><span>■</span>2種類のタイムラインを応用した作例ページへ</li>
+  </ul>
+</nav>
+</body>
+</html>
+
+<style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+}
+
+p {
+  line-height: 2;
+}
+
+/* ------------ 画面右下の雫 ------------ */
+.drop {
+  position: fixed;
+  bottom: 20px;
+  right: 0;
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+  background: white;
+  clip-path: path("m58,70.879c0,16.083-12.984,29.121-29,29.121S0,86.962,0,70.879,29,0,29,0c0,0,29,54.797,29,70.879Z");
+}
+
+.drop_inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: royalblue;
+  transform-origin: bottom; /* 下部を変形の基準にする */
+  animation: grow-progress linear;
+  animation-timeline: scroll();
+}
+
+/* 垂直方向にスケールを変えるキーフレーム */
+@keyframes grow-progress {
+  from {
+    scale: 1 0;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+/* ------------ ヒーローエリア ------------ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #d0e4f8;
+}
+
+.hero_title {
+  position: fixed;
+  top: 30%;
+  width: 100%;
+  font-size: 3rem;
+  text-align: center;
+  animation: scale-down linear both;
+  animation-timeline: view();
+  animation-range: contain 70% contain 100%;
+}
+
+@keyframes scale-down {
+  to {
+    scale: 0.7;
+    opacity: 0;
+  }
+}
+
+.hero_layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-size: cover;
+}
+
+.hero_layer__back {
+  bottom: 0;
+  height: 30vh;
+  background-image: url("../images/back.svg");
+  animation: parallax-image linear both;
+  animation-timeline: view();
+  animation-range: contain 0% exit 100%;
+}
+
+@keyframes parallax-image {
+  from {
+    translate: 0 -13vh;
+  }
+}
+
+/* 画像が足りない分を書き足し */
+.hero_layer__back::after {
+  content: "";
+  position: absolute;
+  bottom: -20vh;
+  width: 100%;
+  height: 20vh;
+  background-color: #69eaca;
+}
+
+.hero_layer__front {
+  bottom: -20vh;
+  height: 40vh;
+  background-image: url("../images/front.svg");
+  animation: parallax-image-front linear both;
+  animation-timeline: view();
+  animation-range: contain 0% exit 100%;
+}
+
+@keyframes parallax-image-front {
+  to {
+    translate: 0 -5vh;
+  }
+}
+
+/* 画像が足りない分を書き足し */
+.hero_layer__front::after {
+  content: "";
+  position: absolute;
+  bottom: -10vh;
+  width: 100%;
+  height: 10vh;
+  background-color: #41cca4;
+}
+
+/* ------------------------ */
+.wrapper {
+  background-color: #41cca4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: clip;
+}
+
+/* ------------ キラキラ：opacity 鳥：offset ------------ */
+.sectionBird {
+  position: relative;
+  padding: 300px 1vw;
+  background-color: #41cca4;
+}
+
+/* キラキラ */
+.sectionBird::before, .sectionBird::after {
+  position: absolute;
+  top: 5%;
+  width: 20vw;
+  height: 90%;
+  content: "";
+  background-image: url("../images/twinkle.svg");
+  background-size: contain;
+  mix-blend-mode: plus-lighter;
+  animation: fade-in linear both;
+  animation-timeline: view();
+  animation-range: cover 45% cover 60%;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.sectionBird::before {
+  left: -18vw;
+}
+
+.sectionBird::after {
+  right: -18vw;
+  scale: -1 -1;
+}
+
+.sectionBird p {
+  margin: 0 auto 100px;
+  max-width: 800px;
+}
+
+.bird {
+  position: absolute;
+  top: 20%;
+  left: -120px;
+
+  /* offsetプロパティの紹介記事： https://ics.media/entry/230327/ */
+  offset-path: path("m16.335.397C8.884,6.095-1.144,31.39.729,36.776c6.402,18.409,34.762,21.381,37.982,33.361,8.471,31.513-18.708,30.613-24.591,36.49-10.986,10.974-.465,49.54,16.065,68.698,30.176,34.972,17.15,70.578-23.667,93.591");
+  offset-rotate: 0deg;
+
+  animation: fly-bird linear both;
+  animation-timeline: view();
+  animation-range: cover 0% exit 250%;
+}
+
+@keyframes fly-bird {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+.bird__reverse {
+  top: unset;
+  left: unset;
+  right: -120px;
+  bottom: 40%;
+  offset-path: path("m16.335.397C8.884,6.095-1.144,31.39.729,36.776c6.402,18.409,34.762,21.381,37.982,33.361,8.471,31.513-18.708,30.613-24.591,36.49-12.555,12.542-2.606,67.337,25.866,72.92");
+  offset-rotate: 20deg;
+  scale: -1 1;
+}
+
+/* ------------ 宝石：sticky & translate & clip-path ------------ */
+.sectionPin {
+  width: 100%;
+  height: 200vh; /* スクロール長め */
+}
+
+.pin_text {
+  width: calc(50vw - 100px);
+}
+
+.pin_sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-x: clip;
+  background-image: linear-gradient(#83a2cb, #D4E7F4);
+  view-timeline: --sticky-timeline; /* 画像マスクアニメーション用のタイムラインを定義 */
+}
+
+.pin_wrapper {
+  display: flex;
+  gap: 100px;
+  flex-direction: row;
+  align-items: center;
+  width: 200vmax;
+  height: 100%;
+
+  animation: slide-image linear both;
+  animation-timeline: view();
+  animation-range: contain; /* = contain 0% contain 100% */
+}
+
+@keyframes slide-image {
+  from {
+    translate: 50vw 0;
+  }
+  to {
+    translate: -550px 0;
+  }
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+  animation: reveal-gem linear both;
+  animation-timeline: --sticky-timeline; /* .pin_stickyに定義したタイムラインを指定 */
+  animation-range: contain 55% contain 70%; /* sticky中の「縦」のスクロール量で判定 */
+}
+
+/* 円→（角丸四角形を経由）→正方形 にマスクの形状を変化させるキーフレーム */
+@keyframes reveal-gem {
+  from {
+    clip-path: inset(30% round 20%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+.image__2 {
+  animation-range: contain 65% contain 80%;
+}
+
+.image__3 {
+  animation-range: contain 75% contain 90%;
+}
+
+/* ------------ 雫のパララックス ------------ */
+.sectionDrop {
+  position: relative;
+  width: 100%;
+  padding: 300px 1vw;
+  background-color: #D4E7F4;
+}
+
+.sectionDrop p {
+  margin: 0 auto 40px;
+  max-width: 800px;
+}
+
+.dropGem {
+  position: absolute;
+  width: 88px;
+  height: 124px;
+  background-image: url("../images/drop-blue-01.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: parallax-drop linear both;
+  animation-timeline: view();
+  animation-range: cover; /* = cover 0% cover 100% */
+}
+
+@keyframes parallax-drop {
+  from {
+    translate: 0 200px;
+  }
+  to {
+    translate: 0 -200px;
+  }
+}
+
+.dropGem__blue2 {
+  background-image: url("../images/drop-blue-02.webp");
+}
+
+.dropGem__blue3 {
+  background-image: url("../images/drop-blue-03.webp");
+}
+
+.dropGem__medium {
+  scale: 0.8;
+  animation-range: entry -150% exit 250%; /* 開始終了位置をオーバーにして、動く量を少なく見せています。移動量を調整した別の@keyframesを作って使用する方法も○です */
+}
+
+.dropGem__small {
+  scale: 0.6;
+  animation-range: entry -800% exit 900%;
+}
+
+.dropGem__1 {
+  top: 20%;
+  left: 15%;
+}
+
+.dropGem__2 {
+  bottom: 20%;
+  left: 10%;
+}
+
+.dropGem__3 {
+  top: 15%;
+  right: 20%;
+}
+
+.dropGem__4 {
+  top: 50%;
+  right: 15%;
+}
+
+.dropGem__5 {
+  bottom: 15%;
+  right: 25%;
+}
+
+/* ------------ 空：sticky & clip-path ------------ */
+.sectionSky {
+  position: relative;
+  width: 100%;
+  height: 170vh;
+  background-color: #D4E7F4;
+}
+
+@keyframes reveal-sky {
+  from {
+    clip-path: ellipse(60px 80px);
+  }
+  to {
+    clip-path: ellipse(60% 130%);
+  }
+}
+
+.sky_image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: sticky;
+  top: 0;
+  animation: reveal-sky linear both;
+  animation-timeline: view();
+  animation-range: contain 0% contain 70%;
+  /* ↑ https://scroll-driven-animations.style/tools/view-timeline/ranges/#range-start-name=contain&range-start-percentage=0&range-end-name=contain&range-end-percentage=70&view-timeline-axis=block&view-timeline-inset=0&subject-size=taller&subject-animation=scale-up&interactivity=clicktodrag&show-areas=yes&show-fromto=yes&show-labels=yes */
+}
+
+.sky_text {
+  position: relative;
+  background-color: white;
+  line-height: 2;
+  max-width: 23rem;
+  padding: 1rem 2rem;
+  margin-left: 80px;
+}
+</style>

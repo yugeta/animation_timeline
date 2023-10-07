@@ -12,7 +12,7 @@
  * @return css-value
  * 
  * // すべてのcss設定から、propertyを検索して取得する
- * @method Css.search_properties( property )
+ * @method Css.get_rule_properties( property )
  * @return array
  * 
  */
@@ -107,7 +107,12 @@ export class Css{
     return arr;
   }
 
-  static search_properties(property){
+  static get_animation_range(selector){
+    const value = Css.get_css(selector, '--animation-range')
+
+  }
+
+  static get_rule_properties(property){
     const styleSheets = Css.get_stylesheets()
     const arr = []
     for(const ss of styleSheets){
@@ -119,10 +124,7 @@ export class Css{
         // styles
         for(const style of cssRule.style){
           if(style === property){
-            arr.push({
-              selector : cssRule.selectorText,
-              value    : cssRule.style.getPropertyValue(property),
-            })
+            arr.push(cssRule)
           }
         }
       }
@@ -131,6 +133,16 @@ export class Css{
   }
 
   static get_keyframes(animation_name){
+    const keyframes = Css.get_keyframes2(animation_name)
+    const arr = []
+    for(const keyframe of keyframes.cssRules){
+      keyframe.rate = Number(keyframe.keyText.replace('%',''))
+      arr.push(keyframe)
+    }
+    return arr
+  }
+
+  static get_keyframes2(animation_name){
     const styleSheets = Css.get_stylesheets()
     const arr = []
     for(const ss of styleSheets){

@@ -1,72 +1,87 @@
-import { Css } from './css.js'
+import { Css }    from './css.js'
+import { Scroll } from './scroll.js'
+import { View }   from './view.js'
 
 export class AnimationTimeline{
+
+  animation_timeline = '--animation-timeline'
+
   constructor(){
-    if(this.if_animation_timing_use){return}
-    this.animation_timelines = this.search_timeline()
-    if(!this.animation_timelines.length){return}
-    this.init()
+    if(this.exist_animation_timing){return}
+    const cssRules = Css.get_rule_properties(this.animation_timeline)
+    if(!cssRules.length){return}
+    this.init(cssRules)
   }
 
-  get if_animation_timing_use(){
+  get exist_animation_timing(){
     return typeof document.body.style.animationTimeline === 'undefined' ? false : true
   }
 
   get param(){
     return document.querySelector(`.param`)
   }
-  get window_height(){
-    return window.innerHeight
-  }
-  get scroll_height(){
-    return document.body.scrollHeight
-  }
-  get scroll_rate(){
-    let rate = this.scrollTop / (this.scroll_height - this.window_height) * 100
-    rate = rate > 0 ? rate : 0
-    rate = rate < 100 ? rate : 100
-    return rate
-  }
-  get scrollTop(){
-    return document.scrollingElement.scrollTop
-  }
 
-  init(){
-    for(const data of this.animation_timelines){
-      data.animation_name = Css.get_css(data.selector,'animation-name')
-      data.keyframes      = this.get_keyframes(data.animation_name)
-      Css.set_css(data.selector , 'animation-play-state', 'paused')
-      Css.set_css(data.selector , 'animation-duration', '100s')
-      Css.set_css(data.selector , 'animation-timing-function', 'linear')
-      switch(data.value){
+  init(cssRules){
+    for(const cssRule of cssRules){
+      Css.set_css(cssRule.selectorText , 'animation-play-state'      , 'paused')
+      Css.set_css(cssRule.selectorText , 'animation-duration'        , '100s')
+      Css.set_css(cssRule.selectorText , 'animation-timing-function' , 'linear')
+      
+      const animation_name     = Css.get_css(cssRule.selectorText, 'animation-name')
+      const animation_timeline = cssRule.style.getPropertyValue(this.animation_timeline)
+      const animation_range    = this.get_animation_range(cssRule)
+      const data = {
+        selector           : cssRule.selectorText,
+        animation_timeline : animation_timeline,
+        animation_name     : animation_name,
+        animation_range    : animation_range,
+        keyframes          : Css.get_keyframes(animation_name),
+      }
+
+      switch(animation_timeline){
         case 'scroll()':
-          this.set_scroll(data)
-          this.scroll(data)
+          new Scroll(data)
+          break
+        case 'view()':
+          new View(data)
           break
       }
     }
   }
 
-  get_keyframes(animation_name){
-    const keyframes = Css.get_keyframes(animation_name)
-    const arr = []
-    for(const keyframe of keyframes.cssRules){
-      keyframe.rate = Number(keyframe.keyText.replace('%',''))
-      arr.push(keyframe)
+  get_animation_range(cssRule){return null
+    const range = cssRule.style.getPropertyValue('--animation-range')
+    if(range){
+      const ranges = range.split(' ')
+      if(ranges.length === 1){
+        return {
+          start : ranges[0],
+          end   : null,
+        }
+      }
+      else if(ranges.length === 1){
+
+      }
+      const start = null
+      switch(ranges[0]){
+        case 'cover':
+
+        case 'contain':
+
+        case 'normal':
+
+        case 'entry':
+
+      }
     }
-    return arr
-  }
+    else{
+      const start = range ? (range=>{
+        return range.match
+      })(range) : cssRule.style.getPropertyValue('--animation-range-start')
+      const end   = range ? (range=>{
 
-  set_scroll(data){
-    window.addEventListener('scroll', this.scroll.bind(this , data))
+      })(range) : cssRule.style.getPropertyValue('--animation-range-end')
+    }
+    return { start : start, end : end }
   }
-
-  scroll(data){
-    Css.set_css(data.selector, 'animation-delay', `-${(this.scroll_rate)}s`)
-  }
-
-  search_timeline(){
-    return Css.search_properties('--animation-timeline')
-  }
-
 }

@@ -1,0 +1,40 @@
+section{
+  height:300px;
+  border:1px solid black;
+  padding:50px;
+  margin:50px;
+  position:relative;
+}
+
+.box{
+  width:100px;
+  height:100px;
+  background-color:black;
+  opacity:0;
+  transition-property:opacity;
+  transition-duration:1.0s;
+  transition-delay:0.3s;
+}
+
+.red{
+  background-color:red;
+}
+.blue{
+  background-color:blue;
+}
+.orange{
+  background-color:orange;
+}
+.pink{
+  background-color:pink;
+}
+.yellow{
+  background-color:yellow;
+}
+
+.yellow{
+  border:1px solid black;
+}
+[data-trigger-flg]{
+  opacity:1.0;
+}
